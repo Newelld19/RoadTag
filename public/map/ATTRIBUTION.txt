@@ -1,0 +1,12 @@
+US map source
+=============
+
+File: src/assets/us-map.svg
+Source: Wikimedia Commons, "Blank US Map (states only).svg"
+Author: Heitordp
+License: CC0 1.0 Universal Public Domain Dedication
+URL: https://commons.wikimedia.org/wiki/File:Blank_US_Map_(states_only).svg
+
+Alaska is drawn at 42% of contiguous-US scale as an inset. Hawaii is drawn at
+full contiguous-US scale as an inset. Northwestern Hawaiian Islands and some
+Aleutian islands are omitted in the source file.

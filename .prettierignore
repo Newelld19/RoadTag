@@ -1,0 +1,8 @@
+dist
+coverage
+node_modules
+public/icons
+public/apple-touch-icon.png
+public/favicon.png
+public/map
+*.tsbuildinfo
