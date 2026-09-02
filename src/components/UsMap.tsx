@@ -193,8 +193,8 @@ export function UsMap({ trip, selectedCode, onMissing, onOpen }: Props) {
                     inert
                       ? `${label}, not in this trip`
                       : spotted
-                        ? `${label}, spotted`
-                        : `${label}, missing`
+                        ? `${label}, tagged`
+                        : `${label}, UnTagged`
                   }
                   aria-disabled={inert}
                   onClick={() => activate(path.code)}
@@ -235,8 +235,8 @@ export function UsMap({ trip, selectedCode, onMissing, onOpen }: Props) {
               aria-label={
                 dcEnabled
                   ? isSpotted(trip, "DC")
-                    ? "Washington, D.C., spotted"
-                    : "Washington, D.C., missing"
+                    ? "Washington, D.C., tagged"
+                    : "Washington, D.C., UnTagged"
                   : "Washington, D.C., not in this trip"
               }
               aria-disabled={!dcEnabled}

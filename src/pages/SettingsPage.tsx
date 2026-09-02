@@ -81,7 +81,7 @@ export function SettingsPage({ settings, trips, onBack, onSave, onRestore }: Pro
           </div>
         </fieldset>
         <label className="field">
-          Spotted places
+          Tagged places
           <select
             value={settings.spottedSort}
             onChange={(event) =>
@@ -89,7 +89,7 @@ export function SettingsPage({ settings, trips, onBack, onSave, onRestore }: Pro
             }
           >
             <option value="in-place">Stay in place</option>
-            <option value="below-missing">Move below missing</option>
+            <option value="below-missing">Move below UnTagged</option>
           </select>
         </label>
         <label className="pack-toggle">

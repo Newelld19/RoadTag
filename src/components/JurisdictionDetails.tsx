@@ -9,7 +9,7 @@ interface Props {
   item: Jurisdiction;
   sighting: Sighting | undefined;
   onClose: () => void;
-  onMarkMissing: () => void;
+  onUntag: () => void;
   onSaveNote: (note: string) => Promise<void>;
 }
 
@@ -18,7 +18,7 @@ export function JurisdictionDetails({
   item,
   sighting,
   onClose,
-  onMarkMissing,
+  onUntag,
   onSaveNote,
 }: Props) {
   const [note, setNote] = useState(sighting?.note ?? "");
@@ -28,9 +28,9 @@ export function JurisdictionDetails({
     <Dialog title={item.name} onClose={onClose}>
       <p className="muted">{item.abbreviation}</p>
       {sighting ? (
-        <p>First spotted {formatSpottedAt(sighting.spottedAt)}</p>
+        <p>First tagged {formatSpottedAt(sighting.spottedAt)}</p>
       ) : (
-        <p>Not spotted yet.</p>
+        <p>Not tagged yet.</p>
       )}
       <label className="field">
         Note
@@ -49,8 +49,8 @@ export function JurisdictionDetails({
           </button>
         ) : null}
         {sighting && !readonly ? (
-          <button type="button" className="button danger" onClick={onMarkMissing}>
-            Mark as missing
+          <button type="button" className="button danger" onClick={onUntag}>
+            UnTag
           </button>
         ) : null}
       </div>

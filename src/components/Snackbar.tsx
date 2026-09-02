@@ -13,7 +13,7 @@ export function Snackbar({ snackbar, onDismiss }: Props) {
         {snackbar.onAction && snackbar.actionLabel ? (
           <button
             type="button"
-            className="button"
+            className="button snackbar-button"
             onClick={() => {
               snackbar.onAction?.();
               onDismiss();
@@ -22,8 +22,8 @@ export function Snackbar({ snackbar, onDismiss }: Props) {
             {snackbar.actionLabel}
           </button>
         ) : null}
-        <button type="button" className="button" onClick={onDismiss} aria-label="Dismiss">
-          Dismiss
+        <button type="button" className="button snackbar-button" onClick={onDismiss} aria-label="Tag it">
+          Tag It!
         </button>
       </div>
     </div>

@@ -36,7 +36,7 @@ describe("app screens", () => {
     expect(await screen.findByRole("heading", { name: "Lake run" })).toBeInTheDocument();
     expect(screen.getByText("0 of 50")).toBeInTheDocument();
     await user.type(screen.getByLabelText("Search"), "California");
-    await user.click(screen.getByRole("button", { name: "Mark California as spotted" }));
+    await user.click(screen.getByRole("button", { name: "Tag California" }));
     expect(await screen.findByText("1 of 50")).toBeInTheDocument();
   });
 });

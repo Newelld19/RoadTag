@@ -26,13 +26,14 @@ export function HomePage({
   const fileRef = useRef<HTMLInputElement>(null);
 
   return (
-    <main>
-      <div className="topbar">
-        <h1>{APP_NAME}</h1>
+    <main className="home-screen">
+      <div className="home-hero">
+        <img src="/RoadTag.png" alt="" className="home-logo" />
+        <h1 className="home-title">{APP_NAME}</h1>
       </div>
       {statusMessage ? <p className="error-banner">{statusMessage}</p> : null}
       {error ? <p className="error-banner">{error}</p> : null}
-      <div className="row" style={{ marginBottom: 16 }}>
+      <div className="home-actions row">
         <button type="button" className="button primary" onClick={onCreate}>
           Create trip
         </button>
@@ -65,7 +66,9 @@ export function HomePage({
           }}
         />
       </div>
-      <TripCardList trips={trips} onOpen={onOpen} />
+      <section className="home-trips">
+        <TripCardList trips={trips} onOpen={onOpen} />
+      </section>
       {rulesOpen ? (
         <Dialog title="Rules and about" onClose={() => setRulesOpen(false)}>
           <p>

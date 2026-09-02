@@ -25,8 +25,8 @@ export function JurisdictionList({ trip, items, emptyLabel, onSelect }: Props) {
             onClick={() => onSelect(item)}
             aria-label={
               spotted
-                ? `${item.name}, spotted. Open details.`
-                : `Mark ${item.name} as spotted`
+                ? `${item.name}, tagged. Open details.`
+                : `Tag ${item.name}`
             }
           >
             <span>

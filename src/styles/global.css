@@ -141,8 +141,34 @@ a {
 }
 
 .button.danger {
+  background: var(--surface);
   color: var(--danger);
   border-color: var(--danger);
+}
+
+.dialog .button,
+.dialog .icon-button {
+  background: var(--bg);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.dialog .button.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
+}
+
+.dialog .button.danger {
+  background: var(--surface);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.snackbar .button {
+  background: var(--bg);
+  color: var(--ink);
+  border-color: var(--bg);
 }
 
 .button:disabled {
@@ -168,6 +194,55 @@ a {
   border: 1px solid var(--line);
   background: var(--bg);
   padding: 8px 12px;
+}
+
+.home-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: calc(100dvh - 24px - var(--safe-top) - var(--safe-bottom));
+}
+
+.home-hero {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: min(52vh, 520px);
+  padding: 8px 0;
+}
+
+.home-logo {
+  width: min(100%, 420px);
+  max-height: min(42vh, 420px);
+  height: auto;
+  object-fit: contain;
+  flex: 1 1 auto;
+}
+
+.home-title {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  line-height: 1.1;
+  text-align: center;
+}
+
+.home-actions {
+  flex: none;
+}
+
+.home-trips {
+  flex: none;
+}
+
+.home-screen:has(.trip-list .trip-card) .home-hero {
+  min-height: 140px;
+}
+
+.home-screen:has(.trip-list .trip-card) .home-logo {
+  max-height: 120px;
 }
 
 .trip-list {

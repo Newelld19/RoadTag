@@ -8,6 +8,12 @@ import { isSpotted, recentSightings } from "../services/scoring";
 import { visibleJurisdictions } from "../services/list";
 import { formatSpottedAt } from "../services/trips";
 
+const FILTER_LABELS: Record<SightingFilter, string> = {
+  all: "All",
+  missing: "UnTagged",
+  spotted: "Tagged",
+};
+
 interface Props {
   trip: Trip;
   spottedSort: "in-place" | "below-missing";
@@ -80,7 +86,7 @@ export function GamePage({
               className={`pill ${filter === id ? "active" : ""}`}
               onClick={() => setFilter(id)}
             >
-              {id[0].toUpperCase() + id.slice(1)}
+              {FILTER_LABELS[id]}
             </button>
           ))}
         </div>
@@ -97,9 +103,9 @@ export function GamePage({
           }}
         />
         <section className="card">
-          <h2 className="screen-title">Recent sightings</h2>
+          <h2 className="screen-title">Recent tags</h2>
           {recent.length === 0 ? (
-            <p className="muted">No sightings yet.</p>
+            <p className="muted">No tags yet.</p>
           ) : (
             <div className="recent-list">
               {recent.map((sighting) => {
@@ -136,7 +142,7 @@ export function GamePage({
           item={openItem}
           sighting={openSighting}
           onClose={() => setOpenCode(null)}
-          onMarkMissing={() => {
+          onUntag={() => {
             void onUnspot(openItem.code);
             setOpenCode(null);
           }}

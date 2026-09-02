@@ -93,9 +93,9 @@ export function TripDetailsPage({
         </section>
       ) : null}
       <section className="card">
-        <h2 className="screen-title">Recent sightings</h2>
+        <h2 className="screen-title">Recent tags</h2>
         {recent.length === 0 ? (
-          <p className="muted">No sightings yet.</p>
+          <p className="muted">No tags yet.</p>
         ) : (
           recent.map((item) => (
             <p key={item.jurisdictionCode}>

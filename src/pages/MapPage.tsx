@@ -80,7 +80,7 @@ export function MapPage({ trip, onBack, onSpot, onUnspot, onNote }: Props) {
           item={openItem}
           sighting={openSighting}
           onClose={() => setOpenCode(null)}
-          onMarkMissing={() => {
+          onUntag={() => {
             void onUnspot(openItem.code);
             setOpenCode(null);
           }}

@@ -58,10 +58,10 @@ export default function App() {
     const next = await store.spot(tripId, code);
     flashSaved();
     const name = JURISDICTION_BY_CODE[code]?.name ?? code;
-    setLiveMessage(`${name} spotted`);
+    setLiveMessage(`${name} tagged`);
     snack.show({
-      message: `${name} spotted`,
-      actionLabel: "Undo",
+      message: `${name} tagged`,
+      actionLabel: "Opps",
       onAction: () => {
         void store.unspot(tripId, code);
       },
@@ -214,7 +214,7 @@ export default function App() {
       ) : null}
       {celebrate ? (
         <Dialog title="50 states" onClose={() => setCelebrate(false)}>
-          <p>Every U.S. state in this trip is spotted. Optional packs are separate.</p>
+          <p>Every U.S. state in this trip is tagged. Optional packs are separate.</p>
           <button
             type="button"
             className="button primary"
