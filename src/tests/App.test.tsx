@@ -23,7 +23,7 @@ describe("app screens", () => {
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Settings" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Rules / About" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "RoadTag" })).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "RoadTag" })).toBeInTheDocument();
   });
 
   it("creates a trip from the home screen", async () => {
@@ -38,5 +38,30 @@ describe("app screens", () => {
     await user.type(screen.getByLabelText("Search"), "California");
     await user.click(screen.getByRole("button", { name: "Tag California" }));
     expect(await screen.findByText("1 of 50")).toBeInTheDocument();
+  });
+
+  it("renames and deletes a trip from the home screen cards", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(await screen.findByRole("button", { name: "Create trip" }));
+    await user.type(screen.getByLabelText("Trip name"), "Lake run");
+    await user.click(screen.getByLabelText(/I understand/));
+    await user.click(screen.getByRole("button", { name: "Create trip" }));
+    await user.click(await screen.findByRole("button", { name: "Back to trips" }));
+
+    await user.click(screen.getByRole("button", { name: "Rename trip Lake run" }));
+    const renameField = screen.getByLabelText("Trip name");
+    await user.clear(renameField);
+    await user.type(renameField, "Coast loop");
+    await user.click(screen.getByRole("button", { name: "Save" }));
+    expect(
+      await screen.findByRole("button", { name: "Open trip Coast loop" }),
+    ).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Delete trip Coast loop" }));
+    await user.click(screen.getByRole("button", { name: "Delete" }));
+    expect(
+      await screen.findByText("No trips yet. Create one before you hit the road."),
+    ).toBeInTheDocument();
   });
 });

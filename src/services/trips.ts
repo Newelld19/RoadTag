@@ -126,9 +126,6 @@ export function addPacksToTrip(trip: Trip, packIds: GamePackId[]): Trip {
 }
 
 export function renameTrip(trip: Trip, name: string): Trip {
-  if (trip.finished) {
-    throw new AppError("readonly", "Reopen this trip before changing it.");
-  }
   const nextName = sanitizeTripName(name);
   if (!nextName) {
     throw new AppError("name", "Give this trip a name.");

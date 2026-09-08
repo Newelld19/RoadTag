@@ -58,19 +58,16 @@ export function TripDetailsPage({
           <input
             value={name}
             maxLength={MAX_TRIP_NAME_LENGTH}
-            disabled={trip.finished}
             onChange={(event) => setName(event.target.value)}
           />
         </label>
-        {!trip.finished ? (
-          <button
-            type="button"
-            className="button"
-            onClick={() => void onRename(name).catch(setCaught(setError))}
-          >
-            Rename
-          </button>
-        ) : null}
+        <button
+          type="button"
+          className="button"
+          onClick={() => void onRename(name).catch(setCaught(setError))}
+        >
+          Rename
+        </button>
         <p>Started {trip.startDate || "—"}</p>
         <p>Ended {trip.endDate || "—"}</p>
         <p>Packs: {trip.packIds.map((id) => packById(id).name).join(", ")}</p>

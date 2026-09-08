@@ -9,6 +9,8 @@ interface Props {
   statusMessage?: string;
   onCreate: () => void;
   onOpen: (id: string) => void;
+  onRename: (id: string, name: string) => Promise<void>;
+  onDelete: (id: string) => Promise<void>;
   onSettings: () => void;
   onImportTrip: (text: string) => Promise<void>;
 }
@@ -18,6 +20,8 @@ export function HomePage({
   statusMessage,
   onCreate,
   onOpen,
+  onRename,
+  onDelete,
   onSettings,
   onImportTrip,
 }: Props) {
@@ -28,8 +32,7 @@ export function HomePage({
   return (
     <main className="home-screen">
       <div className="home-hero">
-        <img src="/RoadTag.png" alt="" className="home-logo" />
-        <h1 className="home-title">{APP_NAME}</h1>
+        <img src="/RoadTag.png" alt={APP_NAME} className="home-logo" />
       </div>
       {statusMessage ? <p className="error-banner">{statusMessage}</p> : null}
       {error ? <p className="error-banner">{error}</p> : null}
@@ -67,7 +70,12 @@ export function HomePage({
         />
       </div>
       <section className="home-trips">
-        <TripCardList trips={trips} onOpen={onOpen} />
+        <TripCardList
+          trips={trips}
+          onOpen={onOpen}
+          onRename={onRename}
+          onDelete={onDelete}
+        />
       </section>
       {rulesOpen ? (
         <Dialog title="Rules and about" onClose={() => setRulesOpen(false)}>

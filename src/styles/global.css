@@ -7,7 +7,7 @@
   --line: #d9d0c3;
   --accent: #1f4d3a;
   --on-accent: #f8f4ec;
-  --danger: #8a2f2f;
+  --danger: #c24747;
   --missing: #d8cfc2;
   --shadow: transparent;
   --radius: 16px;
@@ -28,6 +28,7 @@
   --line: #3a342c;
   --missing: #3a342c;
   --on-accent: #f8f4ec;
+  --danger: #f28b8b;
 }
 
 :root[data-contrast="high"] {
@@ -215,18 +216,11 @@ a {
 }
 
 .home-logo {
-  width: min(100%, 420px);
-  max-height: min(42vh, 420px);
+  width: min(100%, 525px);
+  max-height: min(52.5vh, 525px);
   height: auto;
   object-fit: contain;
   flex: 1 1 auto;
-}
-
-.home-title {
-  margin: 0;
-  font-size: clamp(1.6rem, 5vw, 2.2rem);
-  line-height: 1.1;
-  text-align: center;
 }
 
 .home-actions {
@@ -238,11 +232,11 @@ a {
 }
 
 .home-screen:has(.trip-list .trip-card) .home-hero {
-  min-height: 140px;
+  min-height: 175px;
 }
 
 .home-screen:has(.trip-list .trip-card) .home-logo {
-  max-height: 120px;
+  max-height: 150px;
 }
 
 .trip-list {
@@ -251,12 +245,63 @@ a {
 }
 
 .trip-card {
+  position: relative;
   width: 100%;
   text-align: left;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  padding: 0;
+  overflow: hidden;
+}
+
+.trip-card-icon {
+  position: absolute;
+  right: 8px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  min-width: var(--tap);
+  min-height: var(--tap);
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.trip-card-icon-rename {
+  top: 8px;
+}
+
+.trip-card-icon-delete {
+  bottom: 8px;
+}
+
+.trip-card-icon.danger {
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 55%, var(--line));
+  background: color-mix(in srgb, var(--danger) 12%, var(--surface));
+}
+
+.trip-card-icon svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.trip-card-main {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius);
   padding: 16px;
+  padding-right: calc(16px + var(--tap) + 8px);
+  color: inherit;
 }
 
 .progress-grid {

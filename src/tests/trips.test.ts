@@ -63,6 +63,18 @@ describe("trips", () => {
     expect(renameTrip(trip, "New").name).toBe("New");
   });
 
+  it("renames a finished trip without reopening", () => {
+    const trip = finishTrip(
+      createTripInput({
+        name: "Done",
+        startDate: "2026-07-04",
+        packIds: ["us"],
+        safetyAcknowledged: true,
+      }),
+    );
+    expect(renameTrip(trip, "Archive").name).toBe("Archive");
+  });
+
   it("resets sightings", () => {
     const trip = markSpotted(
       createTripInput({

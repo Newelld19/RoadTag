@@ -110,6 +110,14 @@ export default function App() {
           statusMessage={store.message}
           onCreate={() => nav.push({ name: "create" })}
           onOpen={(id) => nav.push({ name: "game", tripId: id })}
+          onRename={async (id, name) => {
+            await store.rename(id, name);
+            flashSaved();
+          }}
+          onDelete={async (id) => {
+            await store.remove(id);
+            flashSaved();
+          }}
           onSettings={() => nav.push({ name: "settings" })}
           onImportTrip={async (text) => {
             await store.importFromText(text, "trip");
